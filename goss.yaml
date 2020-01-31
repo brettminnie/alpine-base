@@ -1,0 +1,9 @@
+package:
+  python:
+    installed: true
+user:
+  tools:
+    exists: true
+    groups:
+    - app
+    home: /app
