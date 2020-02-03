@@ -3,11 +3,12 @@ FROM alpine:3.7
 ENV HOME /root
 ARG APK_PACKAGES="dos2unix git wget dnsmasq unzip zip python python3 py-pip python-dev py-setuptools build-base bash openntpd tzdata groff jq"
 ARG RUBY_PACKAGES="ruby ruby-bundler libstdc++ tzdata ca-certificates ruby-dev"
+ARG PYTHON_PACKAGES="awscli azure-cli"
 MAINTAINER "Brett Minnie"
 
 RUN apk add --update ${APK_PACKAGES} ${RUBY_PACKAGES}; \
     pip install --upgrade pip; \
-    pip install --upgrade awscli; \
+    pip install --upgrade ${PYTHON_PACKAGES}; \
     adduser -D -u 1000 tools; \
     gem update --system; \
     gem install inspec; \
